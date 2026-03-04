@@ -3,7 +3,10 @@ const statusEl = document.getElementById("status");
 const jsonOutput = document.getElementById("json-output");
 const keyInfoEl = document.getElementById("key-info");
 const scorePanelEl = document.getElementById("score-panel");
-const apiBaseEl = document.getElementById("api_base");
+const apiBase = (
+  (apiBaseEl?.value && apiBaseEl.value.trim()) ||
+  DEFAULT_API_BASE
+).replace(/\/+$/, "");
 // 默认后端地址（你的阿里云 FC HTTP 触发 URL，去掉最后的斜杠）
 const DEFAULT_API_BASE = "https://cv-service-bfaoagpcvd.cn-shenzhen.fcapp.run";
 
