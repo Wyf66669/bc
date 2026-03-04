@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>简历解析与职位匹配 Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <h1>简历解析与一键打分</h1>
+      <p class="subtitle">上传 PDF 简历即可自动评分；如需“岗位匹配度”，可选填写职位描述</p>
+    </header>
+
+    <main class="main">
+      <section class="card">
+        <h2>上传简历（PDF）</h2>
+        <form id="analyze-form">
+          <div class="form-group">
+            <label for="file">简历文件（PDF）<span class="required">*</span></label>
+            <input type="file" id="file" name="file" accept="application/pdf" required />
+          </div>
+
+          <details class="advanced">
+            <summary class="advanced-summary">可选：填写职位描述（用于岗位匹配度评分）</summary>
+            <div class="form-group advanced-body">
+              <label for="job_desc">职位描述（可选）</label>
+              <textarea
+                id="job_desc"
+                name="job_desc"
+                rows="6"
+                placeholder="不填也能出“简历质量分”；填写后将计算“岗位匹配度”。例如：岗位职责、任职要求、技能要求等。"
+              ></textarea>
+            </div>
+          </details>
+
+          <button type="submit" class="btn-primary">一键解析与打分</button>
+        </form>
+        <p id="status" class="status"></p>
+      </section>
+
+      <section class="layout-two-column">
+        <div class="card">
+          <h2>关键信息</h2>
+          <div id="key-info" class="info-grid"></div>
+        </div>
+
+        <div class="card">
+          <h2>评分结果</h2>
+          <div id="score-panel" class="score-panel"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>结构化 JSON 结果</h2>
+        <pre id="json-output" class="json-output"></pre>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>后端：Flask + pdfplumber · 前端：原生 HTML/CSS/JS</span>
+    </footer>
+  </div>
+
+  <script src="/static/main.js"></script>
+</body>
+</html>
+
